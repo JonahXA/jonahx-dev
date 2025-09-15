@@ -1,5 +1,4 @@
-// src/App.tsx
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Routes, Route, NavLink, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import About from './About'
@@ -13,31 +12,19 @@ import './App.css'
 function App() {
   const location = useLocation()
 
-  // 1) Read persisted "entered" once on load
-  const [entered, setEntered] = useState<boolean>(() => {
-    return localStorage.getItem('entered') === '1'
-  })
+  // Always start with the cover on a fresh load/refresh
+  const [entered, setEntered] = useState(false)
   const [fading, setFading] = useState(false)
-
-  // 3) OPTIONAL: if user opens directly to /resume, auto-enter
-  useEffect(() => {
-    const path = location.pathname || window.location.hash
-    if (!entered && (path.includes('/resume') || path.includes('#/resume'))) {
-      // skip the cover for deep-links to resume
-      localStorage.setItem('entered', '1')
-      setEntered(true)
-    }
-  }, [entered, location])
 
   if (!entered) {
     return (
       <MatrixCover
         fadeOut={fading}
         onEnter={() => {
-          setFading(true)                       // start fade
+          setFading(true)
           setTimeout(() => {
-            localStorage.setItem('entered', '1') // 2) persist
-            setEntered(true)                     // unmount the cover
+            // No localStorage — shows again on every reload
+            setEntered(true)
           }, 500)
         }}
       />
@@ -47,22 +34,22 @@ function App() {
   return (
     <div>
       <nav>
-        <NavLink to="/about"     className={({ isActive }) => (isActive ? 'active' : '')}>About</NavLink>
+        <NavLink to="/about" className={({ isActive }) => (isActive ? 'active' : '')}>About</NavLink>
         <NavLink to="/experience" className={({ isActive }) => (isActive ? 'active' : '')}>Experience</NavLink>
-        <NavLink to="/projects"   className={({ isActive }) => (isActive ? 'active' : '')}>Projects</NavLink>
-        <NavLink to="/resume"     className={({ isActive }) => (isActive ? 'active' : '')}>Resume</NavLink>
-        <NavLink to="/sprout"     className={({ isActive }) => (isActive ? 'active' : '')}>Sprout</NavLink>
+        <NavLink to="/projects" className={({ isActive }) => (isActive ? 'active' : '')}>Projects</NavLink>
+        <NavLink to="/resume" className={({ isActive }) => (isActive ? 'active' : '')}>Resume</NavLink>
+        <NavLink to="/sprout" className={({ isActive }) => (isActive ? 'active' : '')}>Sprout</NavLink>
       </nav>
 
       <main>
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
-            <Route path="/"           element={<About />} />
-            <Route path="/about"      element={<About />} />
+            <Route path="/" element={<About />} />
+            <Route path="/about" element={<About />} />
             <Route path="/experience" element={<Experience />} />
-            <Route path="/projects"   element={<Projects />} />
-            <Route path="/resume"     element={<Resume />} />
-            <Route path="/sprout"     element={<Sprout />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/resume" element={<Resume />} />
+            <Route path="/sprout" element={<Sprout />} />
           </Routes>
         </AnimatePresence>
       </main>
