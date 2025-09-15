@@ -358,3 +358,42 @@ main a:hover { color: var(--primary-dim); }
     right: auto;
   }
 }
+@media (max-width: 600px) {
+  nav {
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.9rem;
+    padding: 0.75rem 0.5rem;
+  }
+}
+@media (max-width: 600px) {
+  .hero__title {
+    font-size: 1.6rem;
+  }
+  .hero__subtitle {
+    font-size: 0.9rem;
+    white-space: normal; /* allow wrapping on narrow screens */
+  }
+}
+@media (max-width: 768px) {
+  .xp2 {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 768px) {
+  .resume-embed {
+    display: none;
+  }
+  .resume-download {
+    font-size: 1.1rem;
+    display: block;
+    margin-top: 1rem;
+  }
+}
+@media (max-width: 600px) {
+  body {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    padding: 0 0.5rem;
+  }
+}
