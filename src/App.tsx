@@ -36,7 +36,7 @@ function App() {
       <nav>
         <NavLink to="/about" className={({ isActive }) => (isActive ? 'active' : '')}>About</NavLink>
         <NavLink to="/experience" className={({ isActive }) => (isActive ? 'active' : '')}>Experience</NavLink>
-        <NavLink to="/projects" className={({ isActive }) => (isActive ? 'active' : '')}>Projects</NavLink>
+        <NavLink to="/projects" className={({ isActive }) => (isActive ? 'active' : '')}>Projects & Writings</NavLink>
         <NavLink to="/resume" className={({ isActive }) => (isActive ? 'active' : '')}>Resume</NavLink>
         <NavLink to="/sprout" className={({ isActive }) => (isActive ? 'active' : '')}>Sprout</NavLink>
       </nav>
