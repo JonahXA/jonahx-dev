@@ -390,6 +390,7 @@ main a:hover { color: var(--primary-dim); }
     margin-top: 1rem;
   }
 }
+
 @media (max-width: 600px) {
   body {
     font-size: 0.95rem;
@@ -397,12 +398,17 @@ main a:hover { color: var(--primary-dim); }
     padding: 0 0.5rem;
   }
 }
+
 /* ===== Sprout layout ===== */
 .sprout-hero {
   display: grid;
   grid-template-columns: 140px 1fr;
-  align-items: center;
-  gap: 1.1rem;
+  align-items: start;         /* top-align text with logo */
+  gap: 1.5rem;                /* space between logo & text */
+}
+
+.sprout-hero > div {
+  padding-left: 0.5rem;       /* nudges text slightly right */
 }
 
 .sprout-logo {
@@ -415,11 +421,15 @@ main a:hover { color: var(--primary-dim); }
 /* Mobile tweak */
 @media (max-width: 700px) {
   .sprout-hero {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr;   /* stack vertically */
     text-align: center;
+  }
+  .sprout-hero > div {
+    padding-left: 0;             /* reset padding for mobile */
   }
   .sprout-logo {
     margin: 0 auto 0.5rem auto;
     width: 110px;
   }
 }
+
