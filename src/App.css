@@ -540,4 +540,13 @@ main a:hover { color: var(--primary-dim); }
   .pw-col.left .pw__dot,
   .pw-col.right .pw__dot { left: 3px; right: auto; }
 }
+.pw__title a {
+  color: var(--primary);
+  text-decoration: none;
+}
+.pw__title a:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  color: var(--primary-dim);
+}
 
