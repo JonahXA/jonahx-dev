@@ -18,7 +18,7 @@ export default function Sprout() {
 
     <div>
       <p>
-        Fintech for students, by students. Building with{" "}
+        Fintech for students, by students. Building alongside{" "}
         <a
           href="https://www.linkedin.com/in/dustinchandra/"
           target="_blank"
